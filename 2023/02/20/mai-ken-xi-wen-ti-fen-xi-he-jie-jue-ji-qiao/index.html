@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="jdljun">
+    
+    <title>
+        
+            麦肯锡：问题分析与解决技巧 |
+        
+        Life Records
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/weblogo.jpg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"jdljun.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/weblogo.jpg","favicon":"/images/weblogo.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"抱着草长马发情的伟大真诚去做一切事"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Life Records
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">麦肯锡：问题分析与解决技巧</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/weblogo.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">jdljun</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2023-02-20 17:36:37
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="Part-1-：-从发现问题到想出解决策略"><a href="#Part-1-：-从发现问题到想出解决策略" class="headerlink" title="Part 1 ： 从发现问题到想出解决策略"></a>Part 1 ： 从发现问题到想出解决策略</h3><p>先将问题依据本质做分类，再选出重要的课题领域，然后通过思考解决策略或替代方案的优点和缺点，来逐步进行</p>
+<h4 id="第1章-如何掌握问题"><a href="#第1章-如何掌握问题" class="headerlink" title="第1章 如何掌握问题"></a>第1章 如何掌握问题</h4><p>问题的本质：有了落差，是必须要被解决的课题</p>
+<p>潜在或者显在</p>
+<p>事情的优先级：紧急性和重要性</p>
+<p>问题的分类：</p>
+<ul>
+<li>恢复原状型：</li>
+<li>防范潜在型：重要性小紧急度低</li>
+<li>追求理想型：重要性大紧急性低</li>
+</ul>
+<h4 id="第2章-如何解决恢复原状型问题"><a href="#第2章-如何解决恢复原状型问题" class="headerlink" title="第2章 如何解决恢复原状型问题"></a>第2章 如何解决恢复原状型问题</h4><p>两大课题：分析原因、采取应对策略（紧急处理、根本解决、防止复发）</p>
+<p>分析原因最重要：因为唯有确定不良状态的原因，才能替问题量身定做，拟定根本解决和防止复发策略</p>
+<p>分析原因：基于事实、掌握状况</p>
+<p>分析：针对对象的状态和现象，追根究底地进行归类，阐明其相互关系（人话：找到产生问题的根本原因）</p>
+<ul>
+<li>要素归纳：MECN原则，不重复、不遗漏</li>
+<li>分析原因：6W3H分析（寻找根本原因）、差异分析（寻找变量）</li>
+</ul>
+<p>确定因果关系：1. X-&gt;Y 之间有关联性 2.X发生在Y之前 3.没有其他干扰因素</p>
+<h4 id="第3章-如何解决防范潜在型问题"><a href="#第3章-如何解决防范潜在型问题" class="headerlink" title="第3章 如何解决防范潜在型问题"></a>第3章 如何解决防范潜在型问题</h4><p>课题：确定不良状态、确定诱因、预防策略、发生时的应对策略</p>
+<p>自下而上和自上而下 —&gt; 找到可能的诱因 —&gt;拟定预防策略，排除可能的诱因—&gt;拟定发生不良状态时的应对策略</p>
+<h4 id="第4章-如何解决追去理想型问题"><a href="#第4章-如何解决追去理想型问题" class="headerlink" title="第4章 如何解决追去理想型问题"></a>第4章 如何解决追去理想型问题</h4><p>现状-&gt;理想：资产盘点-&gt;选定理想-&gt;行动计划</p>
+<p>已有最终目标的理想形象，则此时为规划型的课题：如何做到？</p>
+<p>行动起来：设定期限-&gt;找出必要条件-&gt;学习技术或者知识-&gt;制定实施计划</p>
+<p>以自我的价值观为基础，追求属于自己的理想形象</p>
+<h4 id="第5章-如何以分析发现问题"><a href="#第5章-如何以分析发现问题" class="headerlink" title="第5章 如何以分析发现问题"></a>第5章 如何以分析发现问题</h4><p>自己权限内的问题，才是能解决的问题</p>
+<ul>
+<li>要拥有大格局的视点，但别超出自己的权责范围，要以当事者的身份脚踏实地地解决问题</li>
+</ul>
+<p>SCAQ分析</p>
+<ol>
+<li>预先确认当事者的具体形象</li>
+<li>situation：描述当事人过去的经验，目前稳定的状态和心中的理想，以及未来的目标</li>
+<li>Complication：假设一个正在颠覆目前稳定状态的事件</li>
+<li>Question：自问自答的方式假设各种课题</li>
+<li>Answer：思考出Q的解答</li>
+</ol>
+<h4 id="第6章-如何掌握问题的本质，制定替代方案"><a href="#第6章-如何掌握问题的本质，制定替代方案" class="headerlink" title="第6章 如何掌握问题的本质，制定替代方案"></a>第6章 如何掌握问题的本质，制定替代方案</h4><p>设定课题决定了解决问题质量的优劣</p>
+<p>替代方案：选择合适的</p>
+<p>脑力激荡法：不可批评他人，尽量提出想法、自由奔放的发言，发展别人的想法</p>
+<p>替代方案的评价标准：能否真的解决问题、设定好制约条件、思考期待条件、评估权重打相对分数、考虑负面评价</p>
+<h3 id="Part-2：-情境分析：提升决策质量"><a href="#Part-2：-情境分析：提升决策质量" class="headerlink" title="Part 2： 情境分析：提升决策质量"></a>Part 2： 情境分析：提升决策质量</h3><h4 id="第7章-情境分析"><a href="#第7章-情境分析" class="headerlink" title="第7章 情境分析"></a>第7章 情境分析</h4><p>情境分析将环境变化的不确定性带入解决问题的作业过程，能够提升解决问题时做决策的质量</p>
+<ul>
+<li>解决问题时，以不确定性为前提，有系统的评价各种方案</li>
+</ul>
+<p>事先以故事的形式，将环境可能发生的变化考虑在内，因此即使环境产生变化，但因为组织内部已经做好信息共享，所以能够迅速做出应对</p>
+<h4 id="第8章-制作环境脚本"><a href="#第8章-制作环境脚本" class="headerlink" title="第8章 制作环境脚本"></a>第8章 制作环境脚本</h4><p>三步骤</p>
+<ol>
+<li>将环境中风险因素结构化</li>
+<li>定义风险的重要度</li>
+<li>制作环境脚本</li>
+</ol>
+<p>找到高不确定性，高影响度的环境风险</p>
+<h4 id="第9章-结合脚本和替代方案"><a href="#第9章-结合脚本和替代方案" class="headerlink" title="第9章 结合脚本和替代方案"></a>第9章 结合脚本和替代方案</h4><p>使用环境脚本评价各替代方案</p>
+<h4 id="第10章-解决策略的选择顺序"><a href="#第10章-解决策略的选择顺序" class="headerlink" title="第10章 解决策略的选择顺序"></a>第10章 解决策略的选择顺序</h4><p>选择方案</p>
+<ol>
+<li>剔除超出容许范围的解决策略</li>
+<li>思考环境脚本各状况的发生几率</li>
+<li>思考风险和报酬，再选择行动</li>
+</ol>
+<h3 id="Part3：分析"><a href="#Part3：分析" class="headerlink" title="Part3：分析"></a>Part3：分析</h3><h4 id="第11章-分析要合乎逻辑"><a href="#第11章-分析要合乎逻辑" class="headerlink" title="第11章 分析要合乎逻辑"></a>第11章 分析要合乎逻辑</h4><p>分析和解决的基础：逻辑思考 </p>
+<ol>
+<li><p>说出主张，提出论据</p>
+</li>
+<li><p>后设认知检视自己的逻辑：站在听的人的立场上来修正自己的逻辑</p>
+</li>
+<li><p>不断反复检验假设</p>
+</li>
+</ol>
+<h4 id="第12章-分析的本质"><a href="#第12章-分析的本质" class="headerlink" title="第12章 分析的本质"></a>第12章 分析的本质</h4><p>分析即拆解：本质为MECE发想（不重复、不遗漏）</p>
+<p>分析的基本概念：将事物拆解，思考各个组成成分之间的相互关系</p>
+<h4 id="第13章-如何分析策略、产业和营销"><a href="#第13章-如何分析策略、产业和营销" class="headerlink" title="第13章 如何分析策略、产业和营销"></a>第13章 如何分析策略、产业和营销</h4><p>3C分析和7S分析</p>
+<h4 id="第14章-如何分析价值链、消费行为、公关危机"><a href="#第14章-如何分析价值链、消费行为、公关危机" class="headerlink" title="第14章 如何分析价值链、消费行为、公关危机"></a>第14章 如何分析价值链、消费行为、公关危机</h4><p>商业价值链、AIDMA模型（注意、兴趣、欲望、记忆/动机、行动）</p>
+<h4 id="第15章-矩阵分析：从个人职业发展到公司成长"><a href="#第15章-矩阵分析：从个人职业发展到公司成长" class="headerlink" title="第15章 矩阵分析：从个人职业发展到公司成长"></a>第15章 矩阵分析：从个人职业发展到公司成长</h4><p>PPM矩阵：产品*市场矩阵</p>
+<h4 id="第16章-解决问题的心理素质"><a href="#第16章-解决问题的心理素质" class="headerlink" title="第16章 解决问题的心理素质"></a>第16章 解决问题的心理素质</h4><p>失去平常心：</p>
+<ol>
+<li>否定状况</li>
+<li>在错误的时机追究责任</li>
+<li>对状况产生非现实性的评价</li>
+</ol>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2023/04/12/pu-tong-xin-li-xue/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">普通心理学</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/01/24/bi-jiao-zheng-zhi-xue/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">可能性的艺术：比较政治学30讲</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2021</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">jdljun</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Part-1-%EF%BC%9A-%E4%BB%8E%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98%E5%88%B0%E6%83%B3%E5%87%BA%E8%A7%A3%E5%86%B3%E7%AD%96%E7%95%A5"><span class="nav-number">1.</span> <span class="nav-text">Part 1 ： 从发现问题到想出解决策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E5%A6%82%E4%BD%95%E6%8E%8C%E6%8F%A1%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">第1章 如何掌握问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%81%A2%E5%A4%8D%E5%8E%9F%E7%8A%B6%E5%9E%8B%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">第2章 如何解决恢复原状型问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%98%B2%E8%8C%83%E6%BD%9C%E5%9C%A8%E5%9E%8B%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">第3章 如何解决防范潜在型问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC4%E7%AB%A0-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%BD%E5%8E%BB%E7%90%86%E6%83%B3%E5%9E%8B%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">第4章 如何解决追去理想型问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC5%E7%AB%A0-%E5%A6%82%E4%BD%95%E4%BB%A5%E5%88%86%E6%9E%90%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text">第5章 如何以分析发现问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC6%E7%AB%A0-%E5%A6%82%E4%BD%95%E6%8E%8C%E6%8F%A1%E9%97%AE%E9%A2%98%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%8C%E5%88%B6%E5%AE%9A%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88"><span class="nav-number">1.6.</span> <span class="nav-text">第6章 如何掌握问题的本质，制定替代方案</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Part-2%EF%BC%9A-%E6%83%85%E5%A2%83%E5%88%86%E6%9E%90%EF%BC%9A%E6%8F%90%E5%8D%87%E5%86%B3%E7%AD%96%E8%B4%A8%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">Part 2： 情境分析：提升决策质量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC7%E7%AB%A0-%E6%83%85%E5%A2%83%E5%88%86%E6%9E%90"><span class="nav-number">2.1.</span> <span class="nav-text">第7章 情境分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC8%E7%AB%A0-%E5%88%B6%E4%BD%9C%E7%8E%AF%E5%A2%83%E8%84%9A%E6%9C%AC"><span class="nav-number">2.2.</span> <span class="nav-text">第8章 制作环境脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC9%E7%AB%A0-%E7%BB%93%E5%90%88%E8%84%9A%E6%9C%AC%E5%92%8C%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88"><span class="nav-number">2.3.</span> <span class="nav-text">第9章 结合脚本和替代方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC10%E7%AB%A0-%E8%A7%A3%E5%86%B3%E7%AD%96%E7%95%A5%E7%9A%84%E9%80%89%E6%8B%A9%E9%A1%BA%E5%BA%8F"><span class="nav-number">2.4.</span> <span class="nav-text">第10章 解决策略的选择顺序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Part3%EF%BC%9A%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">Part3：分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC11%E7%AB%A0-%E5%88%86%E6%9E%90%E8%A6%81%E5%90%88%E4%B9%8E%E9%80%BB%E8%BE%91"><span class="nav-number">3.1.</span> <span class="nav-text">第11章 分析要合乎逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC12%E7%AB%A0-%E5%88%86%E6%9E%90%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">3.2.</span> <span class="nav-text">第12章 分析的本质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC13%E7%AB%A0-%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90%E7%AD%96%E7%95%A5%E3%80%81%E4%BA%A7%E4%B8%9A%E5%92%8C%E8%90%A5%E9%94%80"><span class="nav-number">3.3.</span> <span class="nav-text">第13章 如何分析策略、产业和营销</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC14%E7%AB%A0-%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90%E4%BB%B7%E5%80%BC%E9%93%BE%E3%80%81%E6%B6%88%E8%B4%B9%E8%A1%8C%E4%B8%BA%E3%80%81%E5%85%AC%E5%85%B3%E5%8D%B1%E6%9C%BA"><span class="nav-number">3.4.</span> <span class="nav-text">第14章 如何分析价值链、消费行为、公关危机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC15%E7%AB%A0-%E7%9F%A9%E9%98%B5%E5%88%86%E6%9E%90%EF%BC%9A%E4%BB%8E%E4%B8%AA%E4%BA%BA%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95%E5%88%B0%E5%85%AC%E5%8F%B8%E6%88%90%E9%95%BF"><span class="nav-number">3.5.</span> <span class="nav-text">第15章 矩阵分析：从个人职业发展到公司成长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC16%E7%AB%A0-%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E7%9A%84%E5%BF%83%E7%90%86%E7%B4%A0%E8%B4%A8"><span class="nav-number">3.6.</span> <span class="nav-text">第16章 解决问题的心理素质</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

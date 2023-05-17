@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="jdljun">
+    
+    <title>
+        
+            金字塔原理 |
+        
+        Life Records
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/weblogo.jpg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"jdljun.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/weblogo.jpg","favicon":"/images/weblogo.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"抱着草长马发情的伟大真诚去做一切事"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Life Records
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">金字塔原理</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/weblogo.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">jdljun</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-06-05 23:44:03
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.3k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>作者：作者: [美]芭芭拉•明托</p>
+<p>出版年：2019-4</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jdljun/imghosting/img/jingzitayuanli.jpg"></p>
+<p>结论先行，以上统下，归类分组，逻辑递进。先重要后次要，先总结后具体，先框架后细节，先结论再原因，先结果后过程，先论点后论据</p>
+<h3 id="表达的逻辑"><a href="#表达的逻辑" class="headerlink" title="表达的逻辑"></a>表达的逻辑</h3><h4 id="为什么要用金字塔结构？"><a href="#为什么要用金字塔结构？" class="headerlink" title="为什么要用金字塔结构？"></a>为什么要用金字塔结构？</h4><p>金字塔结构的信息更容易被读者接受</p>
+<h4 id="如何将思想组织成金字塔结构？"><a href="#如何将思想组织成金字塔结构？" class="headerlink" title="如何将思想组织成金字塔结构？"></a>如何将思想组织成金字塔结构？</h4><p>如果作者传达给读者的思想已经事先进行了归类和概括，并且按自上而下的顺序呈现，读者就能更容易理解作者想要表达的思想。</p>
+<ul>
+<li>归类分组<ul>
+<li>找出逻辑关系，抽象概括，将多个概念抽象后分组</li>
+</ul>
+</li>
+<li>自上而上表达，结论先行<ul>
+<li>先提出总结性思想，再提出被总结的具体思想</li>
+</ul>
+</li>
+<li>自下而上思考，总结概括<ul>
+<li>纵向：文章中任一层次中的思想必须是对其下一层次思想的总结概括</li>
+<li>横向：每组中的思想必须属于同一逻辑范畴</li>
+<li>横向：每组中的思想必须按照逻辑顺序组织关系<ul>
+<li>演绎顺序：大前提：小前提，结论</li>
+<li>时间（步骤）顺序：第一，第二，第三</li>
+<li>结构（空间）顺序：波士顿，纽约，华盛顿</li>
+<li>程度（重要性）顺序：最重要，次重要，等等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="金字塔内部的结构"><a href="#金字塔内部的结构" class="headerlink" title="金字塔内部的结构"></a>金字塔内部的结构</h4><p>纵向关系：疑问/回答式对话结构</p>
+<ul>
+<li>迫使你在理清思路时，从视觉上使纵向的疑问/回答式对话关系清晰化。你的每一个表述都应当引发读者的疑问，而你也必须在这一表述下的横向层次上回答读者的疑问</li>
+</ul>
+<p>横向关系：横向的演绎或归纳推理</p>
+<ul>
+<li>演绎关系：A-&gt;B,B-&gt;C,所以A-&gt;C</li>
+<li>归纳关系：A，B，C -&gt; 抽象得到D</li>
+</ul>
+<p>序言：讲故事式的序言</p>
+<ul>
+<li>背景、冲突、疑问、回答。说明背景的时间和地点，在这一背景中发生了某件事情，可称之为冲突，使读者提出你的文章将要回答的疑问</li>
+</ul>
+<h4 id="如何构建金字塔"><a href="#如何构建金字塔" class="headerlink" title="如何构建金字塔"></a>如何构建金字塔</h4><p>自上而下法</p>
+<ul>
+<li>1.提出主题思想</li>
+<li>2.设想受众的主要疑问</li>
+<li>3.写序言：背景-冲突-疑问-回答</li>
+<li>4.与受众进行疑问-回答式对话</li>
+<li>5.对受众的新疑问，重复进行疑问-回答式对话</li>
+</ul>
+<p>自下而上法</p>
+<ul>
+<li>1.列出你想表达的所有思想要点</li>
+<li>2.找出各要点之间的逻辑关系</li>
+<li>3.得出结论</li>
+</ul>
+<p>初学者注意事项</p>
+<ul>
+<li>1.一定要先搭结构，先尝试自上而下法</li>
+<li>2.序言先写背景，将背景作为序言的起点</li>
+<li>3.先多花时间思考序言，不要省略</li>
+<li>4.将历史背景放到序言中</li>
+<li>5.序言仅涉及读者不会对其真实性提出质疑的内容</li>
+<li>6.在关键句层次上，更宜使用归纳推理而非演绎推理</li>
+</ul>
+<h4 id="序言的具体写法"><a href="#序言的具体写法" class="headerlink" title="序言的具体写法"></a>序言的具体写法</h4><p>先介绍读者熟悉的背景，说明发生的冲突，并借此引发读者的疑问，然后针对该疑问给出答案</p>
+<p>讲故事结构：让读者抛开复杂的思想，专注于你的话题。激发读者兴趣，吸引注意力：新奇、悬念、与读者本人相关</p>
+<ul>
+<li>背景：<ul>
+<li>文章主题相关，且读者肯定会同意的内容，应当是读者已经认可或者将会认可的内容</li>
+<li>引出背景的句子有一个重要的特征：将读者锁定在特定的时间和空间，从而为讲故事做准备</li>
+</ul>
+</li>
+<li>冲突<ul>
+<li>讲故事时推动情节发展的因素，能够促使读者提出疑问</li>
+</ul>
+</li>
+</ul>
+<p>四个典型的例子</p>
+<ul>
+<li>背景：需要完成某个任务； 冲突：发生了妨碍任务发生的事情；读者的疑问：我们应该怎么做</li>
+<li>背景：存在某个问题；冲突：知道解决问题的方案；读者的问题：如何实施解决方案</li>
+<li>背景：存在某个问题；冲突：有人提出了一个解决方案；读者的问题：该方案是否正确？</li>
+<li>背景：采取了某个行动；冲突：行动给未达到预期；读者的问题：为什么没有达到预期？</li>
+</ul>
+<p>写好序言的原则</p>
+<ul>
+<li>1.序言的目的是提示读者而不是告诉读者某些信息。不应该含有某些需要读者证明才能接受的信息，例如图标</li>
+<li>2.序言必须包含3个要素，即背景、冲突和答案</li>
+<li>3.序言的长度取决于读者和主题的需要</li>
+</ul>
+<p>序言的常见模式</p>
+<p>1.发出指示式：针对我们应该做什么或我们应该怎么做等问句</p>
+<p>2.请求支持式：针对是否应该这样做等问句</p>
+<p>3.解释做法式：针对我们应该如何做等问句</p>
+<p>4.比较选择式：针对我们应该做什么等问句</p>
+<h4 id="演绎推理和归纳推理"><a href="#演绎推理和归纳推理" class="headerlink" title="演绎推理和归纳推理"></a>演绎推理和归纳推理</h4><p>演绎推理</p>
+<ul>
+<li>演绎推理的步骤：大前提+小前提-&gt;结论<ul>
+<li>阐述世界上已经存在的某种情况</li>
+<li>阐述世界上同时存在的相关情况。如果第二个表述是针对第一个表述的主语或者谓语，则说明这两个表述相关</li>
+<li>说明这两种情况同时存在时所隐含的意义</li>
+</ul>
+</li>
+<li>演绎推理也可以时以下三个步骤<ul>
+<li>出现的问题或存在的现象</li>
+<li>产生问题的根源、原因</li>
+<li>解决问题的方案</li>
+</ul>
+</li>
+</ul>
+<p>归纳推理</p>
+<ul>
+<li>正确定义该组思想，找到一个能够表示该组所有思想共同点的名词</li>
+<li>识别并剔除该组思想中与其他思想不相称（不属同类、不具备共同点）的思想</li>
+</ul>
+<h3 id="思考的逻辑"><a href="#思考的逻辑" class="headerlink" title="思考的逻辑"></a>思考的逻辑</h3><h4 id="应用逻辑顺序"><a href="#应用逻辑顺序" class="headerlink" title="应用逻辑顺序"></a>应用逻辑顺序</h4><p>所有列入同一组中的思想必须具有某种逻辑顺序</p>
+<p>1.因果前后关系（时间/步骤顺序）</p>
+<p>2.整体分割为部分，或部分组成整体（结构/空间顺序）</p>
+<p>MECE原则：相互独立，完全穷尽</p>
+<p>3.类似事务按重要性归为一组（程度/重要性顺序）</p>
+<h4 id="概括各组思想"><a href="#概括各组思想" class="headerlink" title="概括各组思想"></a>概括各组思想</h4><p>确保思想属于同一组，应抽象、提炼、概括思想精华</p>
+<p>总结句避免使用缺乏思想的句子</p>
+<p>概括行动性思想（介绍采取的行动、行为、动作、步骤 、流程时），应说明采取行动后取得的结果（效果、达到的目标）</p>
+<p>概括描述性思想（介绍背景、信息）时，应说明这些思想具有的共同点的含义（共同点的意义）</p>
+<p>总结句要说明行动产生的结果/目标</p>
+<p>找出各结论之间的共性</p>
+<h3 id="解决问题的逻辑"><a href="#解决问题的逻辑" class="headerlink" title="解决问题的逻辑"></a>解决问题的逻辑</h3><p>界定问题 -&gt; 结构化分析问题 -&gt; 分析/找到解决方案 -&gt;组成金字塔与他人交流</p>
+<h4 id="界定问题"><a href="#界定问题" class="headerlink" title="界定问题"></a>界定问题</h4><p>判断问题是否存在，通常要看经过努力得到的结果（现状），与希望得到的结果（目标）之间是否有差距。由某一特定背景导致的某一特定结果，称为非期望结果（R1，即现状），问题是指你不喜欢的某一结果，想得到其他结果(期望结果R2)，解决方案则是指如何从现状R1到目标R2</p>
+<p>—- 连续分析</p>
+<p>1.是否/有没有可能有问题(机会) —- 界定问题</p>
+<p>2.问题在哪里 —- 界定问题</p>
+<p>3.为什么存在(产生问题的根源，原因) —-结构化分析原因</p>
+<p>4.我们能做什么  —-寻找解决方案</p>
+<p>5.我们应该做什么  —-寻找解决方案</p>
+<p>界定问题的框架</p>
+<p>1.展开说明框架中的各要素</p>
+<ul>
+<li>发生了什么事情：背景（切入点/序幕+困扰/困惑）</li>
+<li>我们不喜欢它什么（非期望结果R1）</li>
+<li>我们想要什么（期望结果R2）</li>
+</ul>
+<p>2.开始写序言</p>
+<h4 id="结构化分析问题"><a href="#结构化分析问题" class="headerlink" title="结构化分析问题"></a>结构化分析问题</h4><p>收集信息 -&gt; 描述发现 -&gt; 得出结论 -&gt; 提出方案</p>
+<p>结构化分析问题的方法</p>
+<p>1.呈现有形结构</p>
+<ul>
+<li>将整体分割为部分分析，将部分组成整体看待</li>
+</ul>
+<p>2.寻找因果关系</p>
+<ul>
+<li>寻找具有因果关系的要素，行为或者任务，得出最终诊断结果</li>
+</ul>
+<p>3.归类分组</p>
+<ul>
+<li>把所有可能的原因按相似性分类</li>
+</ul>
+<p>建立逻辑树：根据相互独立，完全穷尽的原则，对各种可能性作为一个系统逻辑的细分</p>
+<p>是非问题分析</p>
+<h3 id="演示的逻辑"><a href="#演示的逻辑" class="headerlink" title="演示的逻辑"></a>演示的逻辑</h3><h4 id="在书面上呈现金字塔"><a href="#在书面上呈现金字塔" class="headerlink" title="在书面上呈现金字塔"></a>在书面上呈现金字塔</h4><p>1.突出显示文章的框架结构</p>
+<ul>
+<li>多级标题法：不同层次的思想，用不同的标记区分；层次越低的思想离页面的右端越近；同一层次的思想采用同一表现形式</li>
+</ul>
+<p>2.上下文之间要有过渡</p>
+<h4 id="ppt演示文稿中呈现金字塔结构"><a href="#ppt演示文稿中呈现金字塔结构" class="headerlink" title="ppt演示文稿中呈现金字塔结构"></a>ppt演示文稿中呈现金字塔结构</h4><p>1.每次只演示和说明一个论点</p>
+<p>2.论点使用完整的陈述句，而不是标题性语言</p>
+<p>3.文字尽量简短</p>
+<p>4.使用简单的词汇和数字</p>
+<p>5.字号应该足够大</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/06/15/liang-yong-an-yue-du-you-li-he-ai-qing/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">梁永安:阅读、游历和爱情</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/05/25/ke-yi-lian-xi/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">刻意练习</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2021</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">jdljun</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E7%9A%84%E9%80%BB%E8%BE%91"><span class="nav-number">1.</span> <span class="nav-text">表达的逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E9%87%91%E5%AD%97%E5%A1%94%E7%BB%93%E6%9E%84%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要用金字塔结构？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%B0%86%E6%80%9D%E6%83%B3%E7%BB%84%E7%BB%87%E6%88%90%E9%87%91%E5%AD%97%E5%A1%94%E7%BB%93%E6%9E%84%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">如何将思想组织成金字塔结构？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%91%E5%AD%97%E5%A1%94%E5%86%85%E9%83%A8%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">金字塔内部的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA%E9%87%91%E5%AD%97%E5%A1%94"><span class="nav-number">1.4.</span> <span class="nav-text">如何构建金字塔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%8F%E8%A8%80%E7%9A%84%E5%85%B7%E4%BD%93%E5%86%99%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text">序言的具体写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BC%94%E7%BB%8E%E6%8E%A8%E7%90%86%E5%92%8C%E5%BD%92%E7%BA%B3%E6%8E%A8%E7%90%86"><span class="nav-number">1.6.</span> <span class="nav-text">演绎推理和归纳推理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%80%83%E7%9A%84%E9%80%BB%E8%BE%91"><span class="nav-number">2.</span> <span class="nav-text">思考的逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E9%80%BB%E8%BE%91%E9%A1%BA%E5%BA%8F"><span class="nav-number">2.1.</span> <span class="nav-text">应用逻辑顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E6%8B%AC%E5%90%84%E7%BB%84%E6%80%9D%E6%83%B3"><span class="nav-number">2.2.</span> <span class="nav-text">概括各组思想</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E7%9A%84%E9%80%BB%E8%BE%91"><span class="nav-number">3.</span> <span class="nav-text">解决问题的逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%95%8C%E5%AE%9A%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">界定问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">结构化分析问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%E7%9A%84%E9%80%BB%E8%BE%91"><span class="nav-number">4.</span> <span class="nav-text">演示的逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E4%B9%A6%E9%9D%A2%E4%B8%8A%E5%91%88%E7%8E%B0%E9%87%91%E5%AD%97%E5%A1%94"><span class="nav-number">4.1.</span> <span class="nav-text">在书面上呈现金字塔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ppt%E6%BC%94%E7%A4%BA%E6%96%87%E7%A8%BF%E4%B8%AD%E5%91%88%E7%8E%B0%E9%87%91%E5%AD%97%E5%A1%94%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.</span> <span class="nav-text">ppt演示文稿中呈现金字塔结构</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>
