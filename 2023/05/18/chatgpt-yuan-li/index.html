@@ -153,12 +153,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>3.3k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>4.8k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>12 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>17 分钟</span>
         </span>
     
     
@@ -352,7 +352,84 @@
 <p>Attention 模块的输入 embed 和输出结果有一个叠加，这种叠加操作被称为残差模块。之所以这么操作，主要是为了方便模型的训练过程中，梯度不会消失或爆炸</p>
 <p><strong>Linear Feed-forward 全连接层</strong></p>
 <p>为模型增加参数，增强模型的拟合能力</p>
-<h3 id="7-Encoder-Decoder"><a href="#7-Encoder-Decoder" class="headerlink" title="7 Encoder-Decoder"></a>7 Encoder-Decoder</h3>
+<h3 id="7-Encoder-Decoder"><a href="#7-Encoder-Decoder" class="headerlink" title="7 Encoder-Decoder"></a>7 Encoder-Decoder</h3><h4 id="GPT-中的编解码架构"><a href="#GPT-中的编解码架构" class="headerlink" title="GPT 中的编解码架构"></a>GPT 中的编解码架构</h4><p>文本 –&gt; token </p>
+<p>token embedding   + position embedding </p>
+<p>N 层transformer</p>
+<p>最后产出一个K维向量</p>
+<h4 id="解码得到输出-Token"><a href="#解码得到输出-Token" class="headerlink" title="解码得到输出 Token"></a>解码得到输出 Token</h4><p><strong>贪婪搜索 Greedy Search</strong></p>
+<p>哪个token概率最大，就输出哪个token，即按照最大概率值选择模型输出的 token</p>
+<p>缺陷：漏掉一些概率值稍低的正确答案</p>
+<p><strong>束搜索 Beam Search</strong></p>
+<p>选择最高概率的若干选项，再在其中随机抽取的方式叫做束搜索</p>
+<p>可以人为设置一个数量K，从top K 概率的token中抽取</p>
+<p><strong>核搜索 Nucleus Search</strong></p>
+<p>前 T 个概率值加起来大于 top_p（介于 0~1 之间的值），则以这 T 个值作为最终的抽取范围</p>
+<p>top_p越大，则供抽取的token越多</p>
+<p><strong>温控搜索 Temperature Search</strong></p>
+<p>保证各个 token 的概率值相对大小排序不变的情况下，调整其概率值：对概率值进行exp运算</p>
+<p>同时加入一个参数T （0，1之间），对概率值/T 进行exp运算</p>
+<p>则T越小，top概率的token概率被越加放大，输出结果越固定</p>
+<p>T越小，输出结果越随机</p>
+<p>GPT采取的是先核搜索选择一个token范围，再温控搜索</p>
+<h4 id="Mask-掩码层"><a href="#Mask-掩码层" class="headerlink" title="Mask 掩码层"></a>Mask 掩码层</h4><p>1.输入不到最大长度，对输入进行占位符补全</p>
+<p>2.transformer操作时，这些占位符不应参与上下文相关的自注意力计算</p>
+<p>===》 Mask掩码层</p>
+<p>mask 层为每一个 token 位置设置了一个 1，0 取值</p>
+<ul>
+<li>若设为 1，则对应位置 token 正常进行计算</li>
+<li>设为 0 时，对应位置不参与注意力计算。最终的 softmax 概率值为 0。</li>
+</ul>
+<h3 id="8-监督学习与ChatGPT预训练"><a href="#8-监督学习与ChatGPT预训练" class="headerlink" title="8 监督学习与ChatGPT预训练"></a>8 监督学习与ChatGPT预训练</h3><h4 id="神经网络的训练过程"><a href="#神经网络的训练过程" class="headerlink" title="神经网络的训练过程"></a>神经网络的训练过程</h4><p>监督学习（Supervised Learning） ：是通过给定的输入（ChatGPT 的输入文本）和输出（ChatGPT 的输出文本）数据来学习一个函数，使得对于新的输入数据，可以预测其对应的输出。</p>
+<p>将输入数据称为特征，</p>
+<p>将输出数据称为标签或目标变量</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jdljun/imghosting/img/jianduxuexi.png"></p>
+<p><strong>神经网络的输入和输出</strong></p>
+<p>两个样本，标注好了其特征和类别</p>
+<pre><code>样本 1：体长：0.5 米，身高：0.3 米，食量：0.03 kg；类别：猫
+样本 2：体长：1.2 米，身高：0.6 米，食量：0.2 kg；类别：狗
+</code></pre>
+<p>权重参数：模型需要通过样本进行学习和拟合的</p>
+<p>样本 1 的猫类别值：class0=0.5W00 + 0.3W10 + 0.03W20</p>
+<p>样本 1 的狗类别值：class1=0.5W01 + 0.3*W11 + 0.03W21</p>
+<p>通过比较 class0,class1 这两个结果值的大小，如果猫类别值比较大，说明样本属于猫，反之则属于狗。</p>
+<p><strong>神经网络的预测推理</strong></p>
+<p>随机初始化一套参数值，用于模型的推理（也叫模型的预测）。</p>
+<p>通过初始化的参数值，计算类别值，对类别值计算的结果进行softmax运算，得到预测概率值</p>
+<p>若计算结果与标注数据不符合，则需要进一步计算不相符的差距</p>
+<p><strong>神经网络的损失函数</strong></p>
+<p>损失函数是机器学习中一个重要概念，用于衡量模型预测结果与真实结果之间的差距</p>
+<p>常见的损失函数是交叉熵（Cross Entropy）：一个复杂的公式，综合了类别判断是否正确，预测概率值的数据</p>
+<p><strong>梯度下降法</strong></p>
+<p>随机设定的模型权重，会导致模型对样本的类别判断产生错误。这个错误值的大小即交叉熵损失函数值。</p>
+<p>接下来就是让模型能够根据给出的两条样本数据训练模型、更新参数权重，正确地分出每一个样本是猫还是狗。此时，我们就用到了梯度下降法。</p>
+<p>定义：沿着函数的负梯度方向不断迭代，直到达到最小值。（求解偏导数）</p>
+<p>按照梯度下降法对参数值进行更新，直到求解出足够优质的参数</p>
+<h4 id="ChatGPT-的预训练过程"><a href="#ChatGPT-的预训练过程" class="headerlink" title="ChatGPT 的预训练过程"></a>ChatGPT 的预训练过程</h4><p>ChatGPT 的训练流程和上述的猫狗分类没有本质差别</p>
+<h3 id="GPT中的few-shot小样本学习"><a href="#GPT中的few-shot小样本学习" class="headerlink" title="GPT中的few shot小样本学习"></a>GPT中的few shot小样本学习</h3><h4 id="纯监督学习"><a href="#纯监督学习" class="headerlink" title="纯监督学习"></a>纯监督学习</h4><p>即依赖【文本，标注信息】的学习方法</p>
+<p>缺点</p>
+<ul>
+<li>极度依赖标注数据集：人工？ 智能？</li>
+<li>模型只针对特定任务</li>
+<li>模型泛化能力差。</li>
+</ul>
+<p>（完全随机初始化的参数基础上进行训练）</p>
+<h4 id="预训练-微调（Finetune）"><a href="#预训练-微调（Finetune）" class="headerlink" title="预训练+微调（Finetune）"></a>预训练+微调（Finetune）</h4><p>使用大量的未标记数据进行预训练，然后使用少量的标注数据进行微调（finetune），从而适应特定的 NLP 任务</p>
+<p>（已经具备一定语言知识和语言能力（经过了预训练）的参数基础上进行训练）</p>
+<h4 id="In-context-learning"><a href="#In-context-learning" class="headerlink" title="In-context learning"></a>In-context learning</h4><p><strong>In-context learning 原理</strong></p>
+<p>让 GPT 模型在上下文中学习要学的任务和内容</p>
+<p>P(output|input,task)</p>
+<p>task 就是在原输入基础上，补充指定模型完成的任务。即在对语言模型建模时，模型的输入既要指明文本输入内容，又要指明让模型完成什么任务</p>
+<p><strong>In-context learning 的训练</strong></p>
+<p>预训练 + 带上下文任务的标准数据微调</p>
+<p><strong>zero-shot、one-shot、few-shot 小样本学习</strong></p>
+<p><strong>prompt 学习</strong></p>
+<p>prompt 就是对任务做自然语言描述，不加 prompt 就是直接给范例。从本质上看，in-context learning 和 prompt 完全就是一回事。只不过描述的语境，具体的操作稍有不同。</p>
+<p><strong>In-context learning 的效果评价</strong></p>
+<p>只有超大模型（即参数数量非常多）才可以体现出 in-context learning的效果</p>
+<p><strong>In-context learning 的局限性</strong></p>
+<p>1、in-context learning 无法适应自然语言中灵活的用户指令</p>
+<p>2、小样本学习得到的 GPT 模型在做问答任务时，有时会编造虚构事实、产生有误的、带有歧视偏见的回答。</p>
+
         </div>
 
         
@@ -489,7 +566,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ChatGPT%E4%B8%8ENLP"><span class="nav-number">1.</span> <span class="nav-text">1 ChatGPT与NLP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT%E7%9A%84%E5%BB%BA%E6%A8%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">ChatGPT的建模方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NLP%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="nav-number">1.2.</span> <span class="nav-text">NLP的发展历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NLP%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8F%91%E5%B1%95%E8%84%89%E7%BB%9C"><span class="nav-number">1.3.</span> <span class="nav-text">NLP技术的发展脉络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84-Transformer"><span class="nav-number">1.4.</span> <span class="nav-text">ChatGPT的神经网络结构 Transformer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BB%8EGPT1-0%E5%88%B0ChatGPT"><span class="nav-number">2.</span> <span class="nav-text">2 从GPT1.0到ChatGPT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GPT%E5%88%9D%E4%BB%A3"><span class="nav-number">2.1.</span> <span class="nav-text">GPT初代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GPT-2"><span class="nav-number">2.2.</span> <span class="nav-text">GPT-2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GPT-3"><span class="nav-number">2.3.</span> <span class="nav-text">GPT-3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT"><span class="nav-number">2.4.</span> <span class="nav-text">ChatGPT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ChatGPT%E6%98%AF%E4%B8%80%E4%B8%AA%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">3 ChatGPT是一个语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1"><span class="nav-number">3.1.</span> <span class="nav-text">ChatGPT语言模型的数学建模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT%E7%9A%84%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">ChatGPT的语言模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ChatGPT%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E6%96%87%E5%AD%97%E8%BE%93%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">4 ChatGPT如何处理文字输入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tokenizer"><span class="nav-number">4.1.</span> <span class="nav-text">Tokenizer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%8D%E5%B5%8C%E5%85%A5-Embedding"><span class="nav-number">4.2.</span> <span class="nav-text">词嵌入(Embedding)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Attention%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">5 Attention注意力机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E5%BB%BA%E6%A8%A1"><span class="nav-number">5.1.</span> <span class="nav-text">注意力机制的建模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">5.2.</span> <span class="nav-text">注意力机制的好处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-transformer%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">6 transformer结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#transFormer%E7%BB%93%E6%9E%84"><span class="nav-number">6.1.</span> <span class="nav-text">transFormer结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Encoder-Decoder"><span class="nav-number">7.</span> <span class="nav-text">7 Encoder-Decoder</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ChatGPT%E4%B8%8ENLP"><span class="nav-number">1.</span> <span class="nav-text">1 ChatGPT与NLP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT%E7%9A%84%E5%BB%BA%E6%A8%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">ChatGPT的建模方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NLP%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="nav-number">1.2.</span> <span class="nav-text">NLP的发展历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NLP%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8F%91%E5%B1%95%E8%84%89%E7%BB%9C"><span class="nav-number">1.3.</span> <span class="nav-text">NLP技术的发展脉络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84-Transformer"><span class="nav-number">1.4.</span> <span class="nav-text">ChatGPT的神经网络结构 Transformer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BB%8EGPT1-0%E5%88%B0ChatGPT"><span class="nav-number">2.</span> <span class="nav-text">2 从GPT1.0到ChatGPT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GPT%E5%88%9D%E4%BB%A3"><span class="nav-number">2.1.</span> <span class="nav-text">GPT初代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GPT-2"><span class="nav-number">2.2.</span> <span class="nav-text">GPT-2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GPT-3"><span class="nav-number">2.3.</span> <span class="nav-text">GPT-3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT"><span class="nav-number">2.4.</span> <span class="nav-text">ChatGPT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ChatGPT%E6%98%AF%E4%B8%80%E4%B8%AA%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">3 ChatGPT是一个语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1"><span class="nav-number">3.1.</span> <span class="nav-text">ChatGPT语言模型的数学建模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT%E7%9A%84%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">ChatGPT的语言模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ChatGPT%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E6%96%87%E5%AD%97%E8%BE%93%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">4 ChatGPT如何处理文字输入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tokenizer"><span class="nav-number">4.1.</span> <span class="nav-text">Tokenizer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%8D%E5%B5%8C%E5%85%A5-Embedding"><span class="nav-number">4.2.</span> <span class="nav-text">词嵌入(Embedding)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Attention%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">5 Attention注意力机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E5%BB%BA%E6%A8%A1"><span class="nav-number">5.1.</span> <span class="nav-text">注意力机制的建模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">5.2.</span> <span class="nav-text">注意力机制的好处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-transformer%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">6 transformer结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#transFormer%E7%BB%93%E6%9E%84"><span class="nav-number">6.1.</span> <span class="nav-text">transFormer结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Encoder-Decoder"><span class="nav-number">7.</span> <span class="nav-text">7 Encoder-Decoder</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GPT-%E4%B8%AD%E7%9A%84%E7%BC%96%E8%A7%A3%E7%A0%81%E6%9E%B6%E6%9E%84"><span class="nav-number">7.1.</span> <span class="nav-text">GPT 中的编解码架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81%E5%BE%97%E5%88%B0%E8%BE%93%E5%87%BA-Token"><span class="nav-number">7.2.</span> <span class="nav-text">解码得到输出 Token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mask-%E6%8E%A9%E7%A0%81%E5%B1%82"><span class="nav-number">7.3.</span> <span class="nav-text">Mask 掩码层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E4%B8%8EChatGPT%E9%A2%84%E8%AE%AD%E7%BB%83"><span class="nav-number">8.</span> <span class="nav-text">8 监督学习与ChatGPT预训练</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B"><span class="nav-number">8.1.</span> <span class="nav-text">神经网络的训练过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT-%E7%9A%84%E9%A2%84%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B"><span class="nav-number">8.2.</span> <span class="nav-text">ChatGPT 的预训练过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPT%E4%B8%AD%E7%9A%84few-shot%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0"><span class="nav-number">9.</span> <span class="nav-text">GPT中的few shot小样本学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%AF%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">9.1.</span> <span class="nav-text">纯监督学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83-%E5%BE%AE%E8%B0%83%EF%BC%88Finetune%EF%BC%89"><span class="nav-number">9.2.</span> <span class="nav-text">预训练+微调（Finetune）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#In-context-learning"><span class="nav-number">9.3.</span> <span class="nav-text">In-context learning</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
